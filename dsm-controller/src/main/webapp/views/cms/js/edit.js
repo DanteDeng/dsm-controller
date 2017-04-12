@@ -43,7 +43,7 @@ function includeCroper(containerId,croperId) {
 
 //完成截取点击事件
 $("#finishCrop").click(function(e){
-	var canvasInfo = $("#"+croperId)[0].contentWindow.getCanvasInfo();
+	var canvasInfo = $("#"+croperId)[0].contentWindow.getCanvasInfo(800,600);
 	$("#cmsImage").remove();
 	var image = '<img id="cmsImage" src="'+canvasInfo+'"/>';
 	$("#editImageBtn").before('');
