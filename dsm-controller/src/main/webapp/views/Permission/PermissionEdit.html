@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../bootstrap2.3.2/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <link href="../../styles/Common.css" rel="stylesheet" />
+    <link href="../../styles/Iframe.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <h4>数据列表</h4>
+            <div class="add"><a class="btn btn-success" onclick="openadd();">新增</a></div>
+            <div class="w">
+                <div class="span12">
+                    <table class="table table-condensed table-bordered table-hover tab">
+                        <thead>
+                            <tr>
+                                <th>权限名称</th>
+                                <th>权限类型</th>
+                                <th>权限URL</th>
+                                <th>权限描述</th>
+                                <th>菜单级别</th>
+                                <th>菜单名称</th>
+                                <th>菜单编号</th>
+                                <th>上级菜单</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+                    </table>
+                    <div id="page" class="tr"></div>
+                </div>
+            </div>
+
+
+            <div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">新增权限</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                    <input type="hidden" id="permissionId" name="permissionId"/>
+                        <div class="control-group">
+                            <label class="control-label" for="permissionName">权限名称</label>
+                            <div class="controls">
+                                <input type="text" id="permissionName" name="permissionName" placeholder="权限名称">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="permissionType">权限类型</label>
+                            <div class="controls">
+                                <select id="permissionType" name="permissionType">
+                                	<option value="0">请求路径</option>
+                                	<option value="1">静态资源</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="permissionUrl">权限URL</label>
+                            <div class="controls">
+                                <input type="text" id="permissionUrl" name="permissionUrl" placeholder="权限URL">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="permissionDesc">权限描述</label>
+                            <div class="controls">
+                                <input type="text" id="permissionDesc" name="permissionDesc" placeholder="权限描述">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="isMenu">菜单级别</label>
+                            <div class="controls">
+                                <select id="isMenu" name="isMenu">
+                                	<option value="0">不是菜单</option>
+                                	<option value="1">一级菜单</option>
+                                	<option value="2">二级菜单</option>
+                                	<option value="3">三级菜单</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="menuName">菜单名称</label>
+                            <div class="controls">
+                                <input type="text" id="menuName" name="menuName" placeholder="菜单名称">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="menuNo">菜单编号</label>
+                            <div class="controls">
+                                <input type="text" id="menuNo" name="menuNo" placeholder="菜单编号">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="permissionUrl">上级菜单</label>
+                            <div class="controls">
+                                <select id="parentMenu" name="parentMenu">
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                    <button class="btn btn-primary" id="add" onclick="add();">保存</button>
+                    <button class="btn btn-primary" id="edt" onclick="add();">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/jquery-1.9.1.min.js"></script>
+    <script src="../../bootstrap2.3.2/js/bootstrap.min.js"></script>
+    <script src="../../layer/layer.js"></script>
+    <script src="../../laypage/laypage.js"></script>
+    <script src="js/PermissionEdit.js"></script>
+</body>
+</html>

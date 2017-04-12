@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        
+	http://www.springframework.org/schema/beans/spring-beans.xsd        
+	http://code.alibabatech.com/schema/dubbo        
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	<!-- 生成远程服务代理，可以像使用本地bean一样使用demoService -->
+	<dubbo:reference id="apiInfoService"
+		interface="com.dante.biz.apiInfo.service.IApiInfoService" />
+	<dubbo:reference id="columnInfoService"
+		interface="com.dante.biz.apiInfo.service.IColumnInfoService" />	
+	<dubbo:reference id="userService"
+		interface="com.dante.biz.user.service.IUserService" />
+	<dubbo:reference id="permissionService"
+		interface="com.dante.biz.permission.service.IPermissionService" />
+	<dubbo:reference id="roleService"
+		interface="com.dante.biz.role.service.IRoleService" />	
+	<dubbo:reference id="ueditorFileService"
+		interface="com.dante.biz.ueditor.service.IUeditorFileService" />
+	<dubbo:reference id="imageService"
+		interface="com.dante.biz.fileUpload.service.IImageService" />
+	<dubbo:reference id="cmsInfoService"
+		interface="com.dante.biz.cmsInfo.service.ICmsInfoService" />	
+	<dubbo:reference id="fileOperationService"
+		interface="com.dante.biz.fileUpload.service.IFileOperationService" />			
+</beans>

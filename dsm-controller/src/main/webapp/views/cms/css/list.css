@@ -1,0 +1,16 @@
+.list-checkBox{
+	
+}
+
+.list-textarea{
+	width: 100%;
+	height:3rem;
+	overflow: scroll;
+}
+
+.list-image{
+	max-width:5rem;
+	max-height:3rem;
+	width: auto;
+	height:auto;
+}

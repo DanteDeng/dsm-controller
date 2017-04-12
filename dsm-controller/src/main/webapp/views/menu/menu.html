@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="keywords" content="keywords">
+<meta name="description" content="description">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>菜单编辑</title>
+<link href="../../bootstrap2.3.2/css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/edit.css" rel="stylesheet" />
+
+</head>
+
+<body>
+	<div class="row-fluid">
+		<div class="tabbable" id="tabs">
+			<!-- Only required for left/right tabs -->
+			<ul class="nav nav-tabs">
+				<li><a data-toggle="tab" href="#tab1">菜单编辑</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab1">
+					<div class="center-block">
+						<div class="block-content collapse in">
+							<div class="span12">
+								<form class="form-horizontal">
+									<fieldset>
+										<div class="control-group">
+											<label class="control-label" for="menuName">菜单名称</label>
+											<div class="controls">
+												<input type="text" class="span3" id="menuName"
+													name="menuName" placeholder="菜单名称">
+											</div>
+										</div>
+
+										<div class="control-group">
+											<label class="control-label" for="menuLevel">菜单级别</label>
+											<div class="controls">
+												<select class="span3" id="menuLevel" name="menuLevel">
+													<option value="1">1 级</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="control-group">
+											<label class="control-label" for="parentMenuId">上级菜单</label>
+											<div class="controls">
+												<select class="span3" id="parentMenuId" name="parentMenuId"></select>
+											</div>
+										</div>
+
+										<div class="control-group">
+											<label class="control-label" for="menuUrl">菜单链接</label>
+											<div class="controls">
+												<textarea class="span3" rows="3" cols="10" id="menuUrl"
+													name="menuUrl"></textarea>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="menuIcon">菜单图标</label>
+											<div class="controls">
+												<img id="menuIcon" src=" " width="30" height="auto" /> <a
+													id="editImageBtn" class="btn" data-toggle="tab"
+													href="#tab2">编辑图标</a>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="menuOrder">菜单位置</label>
+											<div class="controls">
+												<input type="text" class="span3" id="menuOrder"
+													name="menuOrder" placeholder="输入相应位置的数字">
+											</div>
+										</div>
+										<div class="control-group">
+											<div class="controls">
+												<a class="btn btn-primary" id="addBtn">添加</a>
+												<a class="btn" id="cencelUpdateBtn">取消</a>
+												<a class="btn" id="resetBtn">重置编辑项</a>
+												<!-- <a class="btn" onclick="javascript:showMenuListJson();" data-toggle="tab" href="#tab3">showMenuListJson</a> -->
+											</div>
+										</div>
+									</fieldset>
+								</form>
+
+							</div>
+						</div>
+					</div>
+					<div id="menuListBlock" class="center-block">
+						<table id="menuListTable"
+							class="table table-bordered table-hover table-condensed">
+							<thead>
+								<tr>
+									<th>编号</th>
+									<th>菜单名称</th>
+									<th>菜单级别</th>
+									<th>上级菜单</th>
+									<th>菜单链接</th>
+									<th>菜单图标</th>
+									<th>菜单位置</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="tab-pane" id="tab2">
+					<div class="center-block" id="croperContainer"></div>
+					<div class="form-actions text-center">
+						<a class="btn btn-primary" data-toggle="tab" href="#tab1"
+							id="finishCrop">完成截取</a> <a class="btn" data-toggle="tab"
+							href="#tab1">取消</a>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab3"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript"
+	src="../../bootstrap2.3.2/js/bootstrap.min.js"></script>
+<script src="../../layer/layer.js"></script>
+<script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="../../ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="js/edit.js"></script>
+</html>

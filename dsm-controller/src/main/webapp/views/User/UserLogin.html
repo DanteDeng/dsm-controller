@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="../../bootstrap2.3.2/css/bootstrap.min.css" rel="stylesheet" />
+<title></title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="modal">
+				<table class="table table-condensed table-bordered table-hover tab">
+					<thead>
+						<tr>
+							<th colspan="2">用户登录</th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+						<tr>
+							<td>登录名称：</td>
+							<td><input type="text" id="loginName" name="loginName"
+								placeholder="登录名称" /></td>
+						</tr>
+						<tr>
+							<td>登录密码：</td>
+							<td><input type="password" id="loginPwd" name="userName" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="modal-footer">
+					<button class="btn btn-primary" id="loginBtn"
+						onclick="userLogin();">登录</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../scripts/jquery-1.9.1.min.js"></script>
+	<script src="../../bootstrap2.3.2/js/bootstrap.min.js"></script>
+	<script src="../../layer/layer.js"></script>
+	<script src="../../laypage/laypage.js"></script>
+	<script src="js/UserLogin.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+[{"columnIndex":1,"columnName":"cmsId","columnDescription":"选择","columnType":"checkBox","columnSpecial":""},
+{"columnIndex":2,"columnName":"cmsTitle","columnDescription":"标题","columnType":"input","columnSpecial":""},
+{"columnIndex":3,"columnName":"cmsAuthor","columnDescription":"作者","columnType":"input","columnSpecial":""},
+{"columnIndex":4,"columnName":"cmsImageUrl","columnDescription":"图标","columnType":"image","columnSpecial":""},
+{"columnIndex":5,"columnName":"cmsContent","columnDescription":"内容","columnType":"textarea","columnSpecial":""},
+{"columnIndex":6,"columnName":"createBy","columnDescription":"创建人","columnType":"input","columnSpecial":""},
+{"columnIndex":7,"columnName":"createDate","columnDescription":"创建时间","columnType":"input","columnSpecial":""},
+{"columnIndex":8,"columnName":"updateBy","columnDescription":"修改人","columnType":"input","columnSpecial":""},
+{"columnIndex":9,"columnName":"updateDate","columnDescription":"修改时间","columnType":"input","columnSpecial":""}]

@@ -1,0 +1,34 @@
+﻿/*文字排版、颜色*/
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.edit-main {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.edit-table-row {
+	height: 50px;
+	vertical-align:middle;
+	display: table-row;
+}
+
+.header{
+	position:absolute;
+	top:0;
+	height: 50px;
+}
+.footer {
+	position:absolute;
+	top:0;
+	height: 50px;
+}
+
+.edit-table-cell {
+	display: table-cell;
+	overflow-y:scroll;
+}

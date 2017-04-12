@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="../../bootstrap2.3.2/css/bootstrap.min.css" rel="stylesheet" />
+<title></title>
+<link href="../../styles/Common.css" rel="stylesheet" />
+<link href="../../styles/Iframe.css" rel="stylesheet" />
+<link href="css/ApiInfoEdit.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<h4>数据列表</h4>
+			<div class="add">
+				<a class="btn btn-success" onclick="openadd();">新增</a>
+			</div>
+			<div class="w">
+				<div class="span12">
+					<table class="table table-condensed table-bordered table-hover tab">
+						<thead>
+							<tr>
+								<th>接口名称</th>
+								<th>接口描述</th>
+								<th>访问URL</th>
+								<th>创建人</th>
+								<th>创建时间</th>
+								<th>更新人</th>
+								<th>更新时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="tbody"></tbody>
+					</table>
+					<div id="page" class="tr"></div>
+				</div>
+			</div>
+
+
+			<div id="saveModal" class="modal hide fade" tabindex="-1"
+				role="dialog" aria-labelledby="saveModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h3 id="saveModalLabel">新增接口信息</h3>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<input type="hidden" id="apiInfoId" name="apiInfoId" />
+						<div class="control-group">
+							<label class="control-label" for="apiInfoName">接口名称</label>
+							<div class="controls">
+								<input type="text" id="apiInfoName" name="apiInfoName"
+									placeholder="接口名称">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="apiInfoDescription">接口描述</label>
+							<div class="controls">
+								<textarea rows="3" cols="20" id="apiInfoDescription"
+									name="apiInfoDescription" placeholder="接口描述"></textarea>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="apiInfoUrl">访问链接</label>
+							<div class="controls">
+								<textarea rows="3" cols="20" id="apiInfoUrl" name="apiInfoUrl"
+									placeholder="访问链接"></textarea>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="userType">入参</label>
+							<div class="controls">
+								<a class="btn btn-primary" id="editRole" onclick="editColumn('0')">设置入参</a>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="userType">出参</label>
+							<div class="controls">
+								<a class="btn btn-primary" id="editRole" onclick="editColumn('1')">设置出参</a>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+					<button class="btn btn-primary" id="save" onclick="save();">保存</button>
+				</div>
+			</div>
+
+			<div id="paramInModal" class="modal hide fade" tabindex="-1"
+				role="dialog" aria-labelledby="paramInModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h3 id="paramInModalLabel">编辑参数</h3>
+				</div>
+				<div class="modal-body">
+					<table class="table table-condensed table-bordered table-hover tab">
+						<thead>
+							<tr>
+								<th>字段名称</th>
+								<th>字段描述</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="paramInTbody"></tbody>
+					</table>
+					<div id="paramInDetail">
+					<form class="form-horizontal">
+						<input type="hidden" id="apiColumnType" name="apiColumnType" />
+						<div class="control-group">
+							<label class="control-label" for="columnInfoId">字段名称</label>
+							<div class="controls">
+								<input type="text" id="columnInfoId" name="columnInfoId"
+									placeholder="字段名称">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="columnInfoName">字段描述</label>
+							<div class="controls">
+								<textarea rows="3" cols="20" id="columnInfoName"
+									name="columnInfoName" placeholder="字段描述"></textarea>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="addColumn"></label>
+							<div class="controls">
+								<a class="btn btn-primary" id="addColumn" onclick="addColumn('0')">增加参数</a>
+							</div>
+						</div>
+					</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" id="closeColumnEdit"
+						onclick="closeColumnEdit();">确定</button>
+				</div>
+			</div>
+			
+			<div id="paramOutModal" class="modal hide fade" tabindex="-1"
+				role="dialog" aria-labelledby="paramOutModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h3 id="paramOutModalLabel">编辑参数</h3>
+				</div>
+				<div class="modal-body">
+					<table class="table table-condensed table-bordered table-hover tab">
+						<thead>
+							<tr>
+								<th>字段名称</th>
+								<th>字段描述</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="paramOutTbody"></tbody>
+					</table>
+					<div id="paramOutDetail">
+					<form class="form-horizontal">
+						<div class="control-group">
+							<label class="control-label" for="columnInfoId">字段名称</label>
+							<div class="controls">
+								<input type="text" id="columnInfoId" name="columnInfoId"
+									placeholder="字段名称">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="columnInfoName">字段描述</label>
+							<div class="controls">
+								<textarea rows="3" cols="20" id="columnInfoName"
+									name="columnInfoName" placeholder="字段描述"></textarea>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="addColumn"></label>
+							<div class="controls">
+								<a class="btn btn-primary" id="addColumn" onclick="addColumn('1')">增加参数</a>
+							</div>
+						</div>
+					</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" id="closeColumnEdit"
+						onclick="closeColumnEdit();">确定</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div id="exportDocModal" class="hide">
+		<form id="exportDocForm"><input id="apiInfoIdInForm" name="apiInfoId"></form>		
+	</div>
+
+	<script src="../../scripts/jquery-1.9.1.min.js"></script>
+	<script src="../../scripts/jquery.base64.js"></script>
+	<script src="../../bootstrap2.3.2/js/bootstrap.min.js"></script>
+	<script src="../../layer/layer.js"></script>
+	<script src="../../laypage/laypage.js"></script>
+	<script src="js/ApiInfoEdit.js"></script>
+</body>
+</html>
