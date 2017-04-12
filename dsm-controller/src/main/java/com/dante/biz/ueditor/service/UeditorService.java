@@ -1,11 +1,7 @@
 package com.dante.biz.ueditor.service;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -21,26 +17,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.dante.biz.fileUpload.service.IFileOperationService;
+import com.dante.common.util.ConfigManager;
+import com.dante.common.util.PathFormat;
+import com.dante.common.util.StorageManager;
 import com.dante.model.ueditor.ActionMap;
 import com.dante.model.ueditor.AppInfo;
 import com.dante.model.ueditor.BaseState;
 import com.dante.model.ueditor.FileType;
 import com.dante.model.ueditor.State;
-import com.dante.common.util.ConfigManager;
-import com.dante.common.util.PathFormat;
-import com.dante.common.util.StorageManager;
 
 @Service("ueditorService")
 public class UeditorService implements IUeditorService {
 
-	@Value("${rootPath}")
+	@Value("${biz.file.rootPath}")
 	private String rootPath;
 
-	@Value("${config.json.path}")
+	@Value("${biz.json.ueditorJsonPath}")
 	private String configFilePath;
 
 	@Autowired
 	private IUeditorFileService ueditorFileService;
+
+	@Autowired
+	private IFileOperationService fileOperationService;
 
 	private ConfigManager configManager;
 
@@ -55,27 +55,13 @@ public class UeditorService implements IUeditorService {
 	}
 
 	private String readConfigFile() {
-		StringBuilder builder = new StringBuilder();
-
+		String configString = null;
 		try {
-
-			InputStreamReader reader = new InputStreamReader(new FileInputStream(configFilePath), "UTF-8");
-			BufferedReader bfReader = new BufferedReader(reader);
-
-			String tmpContent = null;
-
-			while ((tmpContent = bfReader.readLine()) != null) {
-				builder.append(tmpContent);
-			}
-
-			bfReader.close();
-
-		} catch (UnsupportedEncodingException e) {
-			// 忽略
-		} catch (IOException e) {
+			configString = fileOperationService.readFile(configFilePath);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return builder.toString();
+		return configString;
 
 	}
 
